@@ -1,10 +1,9 @@
 var peerJSKey = 'r3gfvwpq3wx3l3di';
 //var events = _.clone(Backbone.Events);
 
-$(document).ready(function () {
+function reconnect() {
     var peer = new Peer({key: peerJSKey});
-
-    $('#big').toggle();
+    //$('#big').toggle();
     connectRandom(peer,
         function (connection) {
             $('#spinner').toggle();
@@ -38,8 +37,14 @@ $(document).ready(function () {
             });
         },
         function () {
+            $("#reload").toggle();
             console.log('No');
         }
     );
 
+}
+$(document).ready(function() {
+    $("#reload").toggle();
+    $('#big').toggle();
+    reconnect();
 });
