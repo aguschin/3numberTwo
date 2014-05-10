@@ -1,29 +1,30 @@
 var peerJSKey = 'r3gfvwpq3wx3l3di';
 //var events = _.clone(Backbone.Events);
 
+window.send = function () {
+    connection.send(window.tilearray);
+    connection.send(window.score);
+}
+
 function reconnect() {
     var peer = new Peer({key: peerJSKey});
     //$('#big').toggle();
     connectRandom(peer,
         function (connection) {
             $('#spinner').toggle();
-            //$('#big').toggle();
-            //$('.submit_on_enter').toggle();
-            init(connection);
-            connection.send(window.tilearray);
-            window.send = function() {
+            connection.on('open', function () {
+                init();
                 connection.send(window.tilearray);
-                connection.send(window.score);
-            }
-            $('.submit_on_enter').keydown(function (event) {
-                if (event.keyCode == 13) {
-                    var t = $('.submit_on_enter').val();
-                    $('#text').append('<div id="myText">' + t + '<\div>');
-                    //$('.submit_on_enter').reset();
-                    connection.send(t);
-                    return false;
-                }
-            });
+                $('.submit_on_enter').keydown(function (event) {
+                    if (event.keyCode == 13) {
+                        var t = $('.submit_on_enter').val();
+                        $('#text').append('<div id="myText">' + t + '<\div>');
+                        //$('.submit_on_enter').reset();
+                        connection.send(t);
+                        return false;
+                    }
+                });
+            })
             connection.on('data', function (t) {
                 $('#text').append('<div id="friendText">' + t + '<\div>');
                 //alert('a');
@@ -43,7 +44,7 @@ function reconnect() {
     );
 
 }
-$(document).ready(function() {
+$(document).ready(function () {
     $("#reload").toggle();
     $('#big').toggle();
     reconnect();

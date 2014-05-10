@@ -60,7 +60,7 @@ tile.print = function (x) {
 addEventListener("click", getClickPosition, false);
 
 function getClickPosition(e) {
-    var a = tile.getXY(e.clientX-canvas.offsetLeft, e.clientY-canvas.offsetTop);
+    var a = tile.getXY(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     change(a[0], a[1]);
 }
 
@@ -180,7 +180,7 @@ var refresh = function (x, y) {
         }
         tile.array[x][y] = value + 1;
         refresh(x, y);
-        if (clicks!=0) {
+        if (clicks != 0) {
             window.score = score;
             window.send();
         }
@@ -352,16 +352,16 @@ function render() {
         }
     }
     chain.array = new Array();
-    ctx.fillText(clicks, tile.x + tile.size/2, tile.y-32);
-    ctx.fillText(tile.print(next), tile.x + tile.size*3/2, tile.y-32);
-    ctx.fillText(score, tile.x + tile.size*7/2, tile.y-32);
-    ctx.fillText(friendscore, tile.x + tile.size*9/2, tile.y-32);
+    ctx.fillText(clicks, tile.x + tile.size / 2, tile.y - 32);
+    ctx.fillText(tile.print(next), tile.x + tile.size * 3 / 2, tile.y - 32);
+    ctx.fillText(score, tile.x + tile.size * 7 / 2, tile.y - 32);
+    ctx.fillText(friendscore, tile.x + tile.size * 9 / 2, tile.y - 32);
     ctx.font = "14px Helvetica";
-    ctx.fillText('steps', tile.x + tile.size/2, tile.y-12);
-    ctx.fillText('next', tile.x + tile.size*3/2, tile.y-12);
-    ctx.fillText('you', tile.x + tile.size*7/2, tile.y-12);
-    ctx.fillText('friend', tile.x + tile.size*9/2, tile.y-12);
+    ctx.fillText('steps', tile.x + tile.size / 2, tile.y - 12);
+    ctx.fillText('next', tile.x + tile.size * 3 / 2, tile.y - 12);
+    ctx.fillText('you', tile.x + tile.size * 7 / 2, tile.y - 12);
+    ctx.fillText('friend', tile.x + tile.size * 9 / 2, tile.y - 12);
     if (check()) {
-        ctx.fillText('press R for restart', tile.x + canvas.width / 2, tile.y-32);
+        ctx.fillText('press R for restart', tile.x + canvas.width / 2, tile.y - 32);
     }
 }
