@@ -8,10 +8,12 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.7/peer.min.js"></script>
-    <script src="randompeer.js"></script>
+    <script src="js/randompeer.js"></script>
     <style>
         body {
             overflow-x: hidden;
+            margin: auto;
+            text-align: center;
         }
         #num2 {
             font-weight: 600;
@@ -37,15 +39,12 @@
         #intro {
             background-color: #D1D1D1;
         }
-        #load {
-            margin-left: 50px;
-        }
     </style>
 
     <title>3number</title>
     <link rel="shortcut icon" href="favicon.png">
 </head>
-<body style="margin:auto;">
+<body>
 <div id="load">
     <div id="spinner">connecting...<BR><img src="spinner.gif"></div>
     <button id="reload" onclick="reconnect()">Try to connect again</button>
@@ -58,9 +57,8 @@
     </div>
 </div>
 <script  src="js/game.js"></script>
-
 <script src="js/connect.js"></script>
-
+<script>//init();</script>
 
 </body>
 </html>

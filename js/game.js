@@ -1,7 +1,7 @@
 var tile = {
     size: 64,
     number: 5,
-    x: 20,
+    x: 0,
     y: 64,
     nmax: 15
 }
@@ -60,7 +60,7 @@ tile.print = function (x) {
 addEventListener("click", getClickPosition, false);
 
 function getClickPosition(e) {
-    var a = tile.getXY(e.clientX, e.clientY);
+    var a = tile.getXY(e.clientX-canvas.offsetLeft, e.clientY-canvas.offsetTop);
     change(a[0], a[1]);
 }
 
@@ -352,16 +352,16 @@ function render() {
         }
     }
     chain.array = new Array();
-    ctx.fillText(clicks, tile.x + tile.size/2, 32);
-    ctx.fillText(tile.print(next), tile.x + tile.size*3/2, 32);
-    ctx.fillText(score, tile.x + tile.size*7/2, 32);
-    ctx.fillText(friendscore, tile.x + tile.size*9/2, 32);
+    ctx.fillText(clicks, tile.x + tile.size/2, tile.y-32);
+    ctx.fillText(tile.print(next), tile.x + tile.size*3/2, tile.y-32);
+    ctx.fillText(score, tile.x + tile.size*7/2, tile.y-32);
+    ctx.fillText(friendscore, tile.x + tile.size*9/2, tile.y-32);
     ctx.font = "14px Helvetica";
-    ctx.fillText('steps', tile.x + tile.size/2, 52);
-    ctx.fillText('next', tile.x + tile.size*3/2, 52);
-    ctx.fillText('you', tile.x + tile.size*7/2, 52);
-    ctx.fillText('friend', tile.x + tile.size*9/2, 52);
+    ctx.fillText('steps', tile.x + tile.size/2, tile.y-12);
+    ctx.fillText('next', tile.x + tile.size*3/2, tile.y-12);
+    ctx.fillText('you', tile.x + tile.size*7/2, tile.y-12);
+    ctx.fillText('friend', tile.x + tile.size*9/2, tile.y-12);
     if (check()) {
-        ctx.fillText('press R for restart', tile.x + canvas.width / 2, 32);
+        ctx.fillText('press R for restart', tile.x + canvas.width / 2, tile.y-32);
     }
 }

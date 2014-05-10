@@ -9,12 +9,12 @@ function reconnect() {
             $('#spinner').toggle();
             //$('#big').toggle();
             //$('.submit_on_enter').toggle();
+            init(connection);
+            connection.send(window.tilearray);
             window.send = function() {
                 connection.send(window.tilearray);
                 connection.send(window.score);
             }
-            init(connection);
-            connection.send(window.tilearray);
             $('.submit_on_enter').keydown(function (event) {
                 if (event.keyCode == 13) {
                     var t = $('.submit_on_enter').val();
